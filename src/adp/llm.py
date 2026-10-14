@@ -8,6 +8,7 @@
 import hashlib
 import json
 import os
+import re
 import threading
 import time
 import urllib.error
@@ -37,6 +38,19 @@ class LLMProvider:
 
 def prompt_key(stage: str, model: str, system: str, user: str) -> str:
     return hashlib.sha256("\x1f".join([stage, model, system, user]).encode("utf-8")).hexdigest()
+
+
+_FAILURE_BLOCK = re.compile(r"(It failed these tests:\n).*?(\nFix the code\.)", re.S)
+
+
+def loose_prompt(user: str) -> str:
+    """The prompt with the test-failure text masked.
+
+    Repair prompts embed pytest output, whose wording differs between Python/pytest versions and platforms. Replay matches
+    repair steps on everything else (stage, model, system prompt, spec and the previous code), so the same recorded run
+    replays on a different machine while any real change to the pipeline's prompts still breaks the match.
+    """
+    return _FAILURE_BLOCK.sub(r"\1<failures>\2", user)
 
 
 class OllamaProvider(LLMProvider):
@@ -100,9 +114,15 @@ class ReplayProvider(LLMProvider):
     def __init__(self, path: str):
         with open(path) as f:
             self._data: Dict[str, dict] = json.load(f)
+        self._loose: Dict[str, dict] = {}
+        for rec in self._data.values():
+            if "system" in rec and "user" in rec:
+                self._loose[prompt_key(rec["stage"], rec["model"], rec["system"], loose_prompt(rec["user"]))] = rec
 
     def generate(self, *, stage, model, system, user, **kw) -> LLMResult:
         rec = self._data.get(prompt_key(stage, model, system, user))
+        if rec is None:
+            rec = self._loose.get(prompt_key(stage, model, system, loose_prompt(user)))
         if rec is None:
             raise KeyError(f"no recording for stage={stage} model={model} (prompt changed? re-record with ADP_RECORD_TO)")
         return LLMResult(text=rec["text"], model=model, prompt_tokens=rec.get("prompt_tokens", 0),

@@ -96,7 +96,7 @@ network and a separate identity.
   `v2-spec-driven`: structured spec with edge cases, repair loop), and two model sizes.
 * **Regression in CI without a model:** every generation is recorded by prompt hash. CI replays the recordings through the
   real workflow and compares the metrics with the committed baseline, so a change to the gate, guardrails, parsing or repair
-  logic that alters outcomes fails the build. If a prompt changes, replay raises "no recording" and you re-record.
+  logic that alters outcomes fails the build. If a prompt changes, replay raises "no recording" and you re-record. Repair prompts embed pytest output, whose wording differs across Python/pytest versions and platforms (found when CI on Linux/Python 3.10 disagreed with a macOS/3.12 recording), so replay masks that one block and matches on everything else (stage, model, system prompt, spec and previous code).
 * Small samples: with 12 tasks the confidence intervals are wide (Wilson 95% intervals are reported). Treat differences
   between variants as directions, not proof.
 

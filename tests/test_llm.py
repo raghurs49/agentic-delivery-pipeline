@@ -46,3 +46,23 @@ def test_two_recorders_on_the_same_file_do_not_lose_entries(tmp_path):
 def test_recorded_keys_are_independent_of_seed_and_include_stage_attempt():
     assert prompt_key("spec", "m", "S", "U") != prompt_key("spec#1", "m", "S", "U")
     assert prompt_key("spec", "m", "S", "U") != prompt_key("spec", "m2", "S", "U")
+
+
+def test_replay_tolerates_different_pytest_wording_in_repair_prompts_but_not_other_changes(tmp_path):
+    from adp.agents import IMPL_SPEC, get_variant, implement_user
+    from adp.models import Spec
+
+    v, spec = get_variant("v2-spec-driven"), Spec(summary="s", signature="def f()", acceptance_criteria=["a"])
+    mac = implement_user(v, "REQ", spec, "def f():\n    return 1\n", "E assert 1 == 2   (python 3.12 wording)")
+    linux = implement_user(v, "REQ", spec, "def f():\n    return 1\n", "E assert 1 == 2\nE   ^^^ (python 3.10 wording)")
+    assert mac != linux
+    path = tmp_path / "rec.json"
+    RecordingProvider(FakeProvider(lambda *a: "FIXED"), str(path)).generate(stage="implement1", model="m", system=IMPL_SPEC, user=mac)
+    rp = ReplayProvider(str(path))
+    assert rp.generate(stage="implement1", model="m", system=IMPL_SPEC, user=linux).text == "FIXED"
+    # a different previous attempt (or any other prompt change) must still fail the replay
+    changed = implement_user(v, "REQ", spec, "def f():\n    return 2\n", "E assert 1 == 2")
+    with pytest.raises(KeyError):
+        rp.generate(stage="implement1", model="m", system=IMPL_SPEC, user=changed)
+    with pytest.raises(KeyError):
+        rp.generate(stage="implement2", model="m", system=IMPL_SPEC, user=linux)
