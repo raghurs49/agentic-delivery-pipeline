@@ -1,0 +1,5 @@
+{
+  "id": "merge_intervals",
+  "title": "Merge overlapping intervals",
+  "requirement": "Implement `merge_intervals(intervals: list[list[int]]) -> list[list[int]]` that merges overlapping or touching intervals (touching means one ends exactly where the next starts, so [1,3] and [3,5] merge into [1,5]). The result is sorted by start. Do not modify the input list or its inner lists. An empty list returns an empty list."
+}

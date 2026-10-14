@@ -1,0 +1,478 @@
+{
+  "meta": {
+    "created": "2026-10-14T14:17:04",
+    "provider": "ollama",
+    "spec_model": "qwen2.5:3b-instruct",
+    "code_model": "qwen2.5-coder:3b",
+    "review_model": "qwen2.5:3b-instruct",
+    "n_tasks": 12
+  },
+  "variants": {
+    "v1-naive": {
+      "metrics": {
+        "n_tasks": 12,
+        "hidden_pass": 6,
+        "hidden_pass_rate": 0.5,
+        "hidden_pass_ci95": [
+          0.254,
+          0.746
+        ],
+        "gate_accepted": 1,
+        "gate_accept_rate": 0.083,
+        "gate_precision": 1.0,
+        "false_accepts": 0,
+        "false_rejects": 5,
+        "guardrail_blocked": 2,
+        "avg_repair_iterations": 0.0,
+        "total_llm_calls": 53,
+        "total_tokens": 33140,
+        "avg_llm_latency_s": 43.8,
+        "statuses": {
+          "rejected_by_gate": 10,
+          "failed": 1,
+          "delivered": 1
+        }
+      },
+      "tasks": [
+        {
+          "task_id": "chunk_text",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (7 passed, 3 failed)"
+          ],
+          "error": "",
+          "trace_id": "e51aff7307128775826a526c24b6404f",
+          "llm_calls": 4,
+          "tokens": 2327,
+          "llm_latency_ms": 26348
+        },
+        {
+          "task_id": "dedupe_preserve_order",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (1 passed, 1 failed)"
+          ],
+          "error": "",
+          "trace_id": "ddb2e3739517ff5869cd6c3b7c376c6b",
+          "llm_calls": 4,
+          "tokens": 1413,
+          "llm_latency_ms": 13865
+        },
+        {
+          "task_id": "flatten_dict",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (4 passed, 1 failed)"
+          ],
+          "error": "",
+          "trace_id": "08a172a8597d6976fbdcadba281e62d9",
+          "llm_calls": 5,
+          "tokens": 2098,
+          "llm_latency_ms": 26074
+        },
+        {
+          "task_id": "is_balanced",
+          "status": "failed",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": null,
+          "gate_reasons": [],
+          "error": "ApplicationError: InvalidModelOutput: model produced no valid specification after 3 attempts",
+          "trace_id": "bb8c3fce740e6594fe06b16e4b821b4e",
+          "llm_calls": 0,
+          "tokens": 0,
+          "llm_latency_ms": 0
+        },
+        {
+          "task_id": "lru_cache",
+          "status": "delivered",
+          "gate_accepted": true,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 5,
+          "gate_reasons": [
+            "all checks passed"
+          ],
+          "error": "",
+          "trace_id": "7e91728561b153f0506550f32d18971f",
+          "llm_calls": 5,
+          "tokens": 3763,
+          "llm_latency_ms": 42975
+        },
+        {
+          "task_id": "merge_intervals",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 0,
+          "guardrail_violations": 2,
+          "review_score": 3,
+          "gate_reasons": [
+            "2 guardrail violation(s): tests: only 1 test function(s), need at least 2; tests: do not import from the solution module",
+            "tests failed (0 passed, 1 failed)"
+          ],
+          "error": "",
+          "trace_id": "99df8e4a641e8a4559cc33cd08ad4012",
+          "llm_calls": 6,
+          "tokens": 2681,
+          "llm_latency_ms": 49846
+        },
+        {
+          "task_id": "parse_duration",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (5 passed, 2 failed)"
+          ],
+          "error": "",
+          "trace_id": "577415c4f687cdb0ae24c152c7ee3ebf",
+          "llm_calls": 4,
+          "tokens": 2426,
+          "llm_latency_ms": 27797
+        },
+        {
+          "task_id": "prorated_amount",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 1,
+          "gate_reasons": [
+            "tests failed (0 passed, 4 failed)",
+            "review score 1 below 3"
+          ],
+          "error": "",
+          "trace_id": "7e1ea0ca0eaef430a210ba49dccbca45",
+          "llm_calls": 4,
+          "tokens": 2650,
+          "llm_latency_ms": 33292
+        },
+        {
+          "task_id": "rolling_average",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (3 passed, 1 failed)"
+          ],
+          "error": "",
+          "trace_id": "291a0c6b80e4e71207a0434475ffb38c",
+          "llm_calls": 4,
+          "tokens": 1724,
+          "llm_latency_ms": 42406
+        },
+        {
+          "task_id": "roman_to_int",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (2 passed, 2 failed)"
+          ],
+          "error": "",
+          "trace_id": "666d29f63227f4465f85a6ac15b366ec",
+          "llm_calls": 5,
+          "tokens": 2979,
+          "llm_latency_ms": 56024
+        },
+        {
+          "task_id": "slugify",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (5 passed, 1 failed)"
+          ],
+          "error": "",
+          "trace_id": "26b3880a9a8576fe72c4e2e630a49037",
+          "llm_calls": 5,
+          "tokens": 3362,
+          "llm_latency_ms": 57957
+        },
+        {
+          "task_id": "top_k_frequent",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 1,
+          "review_score": 1,
+          "gate_reasons": [
+            "1 guardrail violation(s): tests: syntax error: unterminated string literal (detected at line 58) (line 58)",
+            "tests failed (0 passed, 2 failed)",
+            "review score 1 below 3"
+          ],
+          "error": "",
+          "trace_id": "cfa216b394e58bb0669766c031ee2a57",
+          "llm_calls": 7,
+          "tokens": 7717,
+          "llm_latency_ms": 148601
+        }
+      ]
+    },
+    "v2-spec-driven": {
+      "metrics": {
+        "n_tasks": 12,
+        "hidden_pass": 6,
+        "hidden_pass_rate": 0.5,
+        "hidden_pass_ci95": [
+          0.254,
+          0.746
+        ],
+        "gate_accepted": 3,
+        "gate_accept_rate": 0.25,
+        "gate_precision": 1.0,
+        "false_accepts": 0,
+        "false_rejects": 3,
+        "guardrail_blocked": 1,
+        "avg_repair_iterations": 1.33,
+        "total_llm_calls": 62,
+        "total_tokens": 51837,
+        "avg_llm_latency_s": 60.9,
+        "statuses": {
+          "rejected_by_gate": 8,
+          "delivered": 3,
+          "failed": 1
+        }
+      },
+      "tasks": [
+        {
+          "task_id": "chunk_text",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 2,
+          "guardrail_violations": 0,
+          "review_score": 5,
+          "gate_reasons": [
+            "tests failed (5 passed, 3 failed)"
+          ],
+          "error": "",
+          "trace_id": "e2d22643f90f156e4624e50aa2b4c41a",
+          "llm_calls": 7,
+          "tokens": 6340,
+          "llm_latency_ms": 108356
+        },
+        {
+          "task_id": "dedupe_preserve_order",
+          "status": "delivered",
+          "gate_accepted": true,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 5,
+          "gate_reasons": [
+            "all checks passed"
+          ],
+          "error": "",
+          "trace_id": "940ad14dc84a0d67ab01e926d482f918",
+          "llm_calls": 4,
+          "tokens": 1909,
+          "llm_latency_ms": 42155
+        },
+        {
+          "task_id": "flatten_dict",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": true,
+          "iterations": 2,
+          "guardrail_violations": 0,
+          "review_score": 4,
+          "gate_reasons": [
+            "tests failed (4 passed, 5 failed)"
+          ],
+          "error": "",
+          "trace_id": "687ded570b1ee46f80c91683a7528f8e",
+          "llm_calls": 6,
+          "tokens": 6392,
+          "llm_latency_ms": 105703
+        },
+        {
+          "task_id": "is_balanced",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 2,
+          "guardrail_violations": 1,
+          "review_score": 1,
+          "gate_reasons": [
+            "1 guardrail violation(s): syntax error: closing parenthesis '}' does not match opening parenthesis '(' (line 3)",
+            "tests failed (0 passed, 2 failed)",
+            "review score 1 below 3"
+          ],
+          "error": "",
+          "trace_id": "013d802ef41202e7e1ac39237ca1031e",
+          "llm_calls": 7,
+          "tokens": 4013,
+          "llm_latency_ms": 54251
+        },
+        {
+          "task_id": "lru_cache",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": true,
+          "iterations": 2,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (4 passed, 2 failed)"
+          ],
+          "error": "",
+          "trace_id": "e8959812e3b8d6a4e084cbd78cfc62f0",
+          "llm_calls": 6,
+          "tokens": 6045,
+          "llm_latency_ms": 82719
+        },
+        {
+          "task_id": "merge_intervals",
+          "status": "failed",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": null,
+          "gate_reasons": [],
+          "error": "ApplicationError: InvalidModelOutput: model produced no valid specification after 3 attempts",
+          "trace_id": "fe615948aa28e571a4cae301d1cce1c3",
+          "llm_calls": 0,
+          "tokens": 0,
+          "llm_latency_ms": 0
+        },
+        {
+          "task_id": "parse_duration",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 2,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (4 passed, 5 failed)"
+          ],
+          "error": "",
+          "trace_id": "33c94d259b4d7b9e251c41d4c1605a5a",
+          "llm_calls": 6,
+          "tokens": 5513,
+          "llm_latency_ms": 72430
+        },
+        {
+          "task_id": "prorated_amount",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": true,
+          "iterations": 2,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (3 passed, 2 failed)"
+          ],
+          "error": "",
+          "trace_id": "205bf12cbb8755693f39916b46e4b03c",
+          "llm_calls": 6,
+          "tokens": 5622,
+          "llm_latency_ms": 56017
+        },
+        {
+          "task_id": "rolling_average",
+          "status": "delivered",
+          "gate_accepted": true,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "all checks passed"
+          ],
+          "error": "",
+          "trace_id": "95f8beb4d80ed1171ff40102f178706c",
+          "llm_calls": 4,
+          "tokens": 2849,
+          "llm_latency_ms": 34319
+        },
+        {
+          "task_id": "roman_to_int",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 2,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "tests failed (8 passed, 1 failed)"
+          ],
+          "error": "",
+          "trace_id": "d33f5f52693d1d323106078aba90651b",
+          "llm_calls": 6,
+          "tokens": 4043,
+          "llm_latency_ms": 43036
+        },
+        {
+          "task_id": "slugify",
+          "status": "rejected_by_gate",
+          "gate_accepted": false,
+          "hidden_passed": false,
+          "iterations": 2,
+          "guardrail_violations": 0,
+          "review_score": 5,
+          "gate_reasons": [
+            "tests failed (5 passed, 1 failed)"
+          ],
+          "error": "",
+          "trace_id": "ee93e6f22ae8b8fbcf9c91516537e477",
+          "llm_calls": 6,
+          "tokens": 6771,
+          "llm_latency_ms": 79908
+        },
+        {
+          "task_id": "top_k_frequent",
+          "status": "delivered",
+          "gate_accepted": true,
+          "hidden_passed": true,
+          "iterations": 0,
+          "guardrail_violations": 0,
+          "review_score": 3,
+          "gate_reasons": [
+            "all checks passed"
+          ],
+          "error": "",
+          "trace_id": "c2b4d4c02d6c454371d84e13da4286e7",
+          "llm_calls": 4,
+          "tokens": 2340,
+          "llm_latency_ms": 52056
+        }
+      ]
+    }
+  }
+}

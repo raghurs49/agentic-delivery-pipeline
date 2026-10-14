@@ -1,0 +1,5 @@
+{
+  "id": "dedupe_preserve_order",
+  "title": "Remove duplicates, keep order",
+  "requirement": "Implement `dedupe_preserve_order(items: list) -> list` that removes duplicate items while keeping the first occurrence of each item and the original order. Items are hashable. Return a new list and do not modify the input."
+}

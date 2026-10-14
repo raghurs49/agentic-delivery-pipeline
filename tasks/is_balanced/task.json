@@ -1,0 +1,5 @@
+{
+  "id": "is_balanced",
+  "title": "Balanced brackets",
+  "requirement": "Implement `is_balanced(text: str) -> bool` that returns True if every bracket of the kinds (), [] and {} in the text is correctly matched and properly nested. Characters other than brackets are ignored. An empty string is balanced."
+}

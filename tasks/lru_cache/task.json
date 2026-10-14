@@ -1,0 +1,5 @@
+{
+  "id": "lru_cache",
+  "title": "LRU cache",
+  "requirement": "Implement a class `LRUCache` with `__init__(self, capacity: int)`, `get(self, key) -> int` and `put(self, key, value) -> None`. `get` returns the stored value, or -1 if the key is absent, and marks the key as most recently used. `put` inserts or updates a key (also marking it most recently used) and, if the number of keys would exceed the capacity, evicts the least recently used key. Raise ValueError if capacity < 1."
+}

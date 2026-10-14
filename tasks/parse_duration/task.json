@@ -1,0 +1,5 @@
+{
+  "id": "parse_duration",
+  "title": "Parse duration strings",
+  "requirement": "Implement `parse_duration(text: str) -> int` that converts a duration such as '1h30m', '45s', '2d4h' or '1h 15m 30s' to a total number of seconds. Units are d (86400 s), h (3600 s), m (60 s) and s (1 s); each unit may appear at most once, in any order; whitespace between parts is allowed. Raise ValueError for an empty string, a number without a unit, a unit without a number, an unknown unit, or a repeated unit."
+}

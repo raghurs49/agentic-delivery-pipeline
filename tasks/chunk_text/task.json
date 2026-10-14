@@ -1,0 +1,5 @@
+{
+  "id": "chunk_text",
+  "title": "Split text into overlapping chunks",
+  "requirement": "Implement `chunk_text(text: str, size: int, overlap: int = 0) -> list[str]` that splits text into chunks of at most `size` characters. The first chunk starts at index 0 and each next chunk starts `size - overlap` characters after the previous start. Stop as soon as a chunk reaches the end of the text, so the last chunk may be shorter and no extra chunk is produced that is already fully contained in the previous one. An empty text returns an empty list. Raise ValueError if size < 1, if overlap < 0, or if overlap >= size."
+}

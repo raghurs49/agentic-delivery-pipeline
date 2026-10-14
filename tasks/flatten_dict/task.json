@@ -1,0 +1,5 @@
+{
+  "id": "flatten_dict",
+  "title": "Flatten nested dictionaries",
+  "requirement": "Implement `flatten_dict(d: dict, sep: str = '.') -> dict` that flattens nested dictionaries into a single-level dictionary whose keys are the key paths joined with `sep`. Only dict values are flattened; lists and other values are kept as they are. A nested empty dict contributes no keys. All keys are strings. An empty dict returns an empty dict."
+}

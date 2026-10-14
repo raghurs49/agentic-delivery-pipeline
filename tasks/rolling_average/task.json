@@ -1,0 +1,5 @@
+{
+  "id": "rolling_average",
+  "title": "Rolling average",
+  "requirement": "Implement `rolling_average(values: list[float], window: int) -> list[float]` that returns the average of every run of `window` consecutive values, each rounded to 2 decimal places. If window is larger than the number of values, return an empty list. Raise ValueError if window < 1."
+}

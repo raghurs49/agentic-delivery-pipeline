@@ -1,0 +1,5 @@
+{
+  "id": "prorated_amount",
+  "title": "Prorated subscription charge",
+  "requirement": "Implement `prorated_amount(monthly_price_cents: int, active_days: int, days_in_month: int) -> int` that returns the charge in whole cents for `active_days` out of `days_in_month` days, i.e. monthly_price_cents * active_days / days_in_month rounded half up to a whole cent (exactly .5 rounds up). Raise ValueError if days_in_month is not between 28 and 31 inclusive, if active_days < 0, or if active_days > days_in_month."
+}

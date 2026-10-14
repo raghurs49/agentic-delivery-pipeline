@@ -1,0 +1,5 @@
+{
+  "id": "roman_to_int",
+  "title": "Roman numerals to integer",
+  "requirement": "Implement `roman_to_int(s: str) -> int` that converts a Roman numeral (symbols I, V, X, L, C, D, M; subtractive notation such as IV=4, IX=9, XL=40, XC=90, CD=400, CM=900) to an integer. Accept uppercase only. Raise ValueError for an empty string or any character that is not one of the seven uppercase symbols."
+}

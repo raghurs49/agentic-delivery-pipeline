@@ -1,0 +1,5 @@
+{
+  "id": "top_k_frequent",
+  "title": "Top-k frequent words",
+  "requirement": "Implement `top_k_frequent(words: list[str], k: int) -> list[str]` that returns the k most frequent words ordered by frequency (highest first); words with equal frequency are ordered alphabetically. If k is larger than the number of distinct words, return all distinct words. An empty list returns an empty list. Raise ValueError if k < 1."
+}

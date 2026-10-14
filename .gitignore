@@ -1,0 +1,11 @@
+.venv/
+.venv312/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.env
+runs/
+*.pyc
+.DS_Store
+*.lock
+*.tmp

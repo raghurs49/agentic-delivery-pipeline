@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-delivery-pipeline"
+version = "0.1.0"
+description = "Spec-to-delivery agent pipeline orchestrated with Temporal, traced and evaluated with Langfuse."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "temporalio>=1.18",
+  "langfuse>=4,<5",
+  "pytest>=7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest-timeout>=2"]
+
+[project.scripts]
+adp = "adp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+  "integration: needs a running Temporal dev server and/or Langfuse (skipped when unavailable)",
+]
