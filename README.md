@@ -1,5 +1,7 @@
 # Agentic Delivery Pipeline
 
+[![ci](https://github.com/raghurs49/agentic-delivery-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/raghurs49/agentic-delivery-pipeline/actions/workflows/ci.yml)
+
 Turn a requirement into reviewed, tested code with AI agents **and human checkpoints**: orchestrated with **Temporal**, traced
 and scored in **Langfuse**, and evaluated against **hidden-test ground truth** so the quality gate itself is measured.
 
